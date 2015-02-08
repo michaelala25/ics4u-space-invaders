@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "C:\\Users\\USER\\Dropbox\\Computer Science\\Java\\Game\\Engines\\Vulcan\\src"
+		}
+	],
+	"javatar":
+	{
+		"dependencies":
+		[
+		],
+		"dependencies_path": "C:\\Users\\USER\\Documents\\Computer Science\\Java\\Game\\Engines\\Vulcan\\lib",
+		"source_folder": "C:\\Users\\USER\\Dropbox\\Grade 11\\Period 7 - Comp Sci\\Assignments\\Simple Game (Space Invaders)\\"
+	}
+}
