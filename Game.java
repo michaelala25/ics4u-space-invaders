@@ -48,7 +48,7 @@ final class GamePanel extends JPanel implements KeyListener{
 
 	// Possible game states.	
 	public enum GameState{
-		PLAYING, WINNING, DYING, INITIALIZING;
+		PLAYING, WINNING, DYING, INITIALIZING, GAMEOVER;
 	}		
 
 	private final Game game;
@@ -60,11 +60,12 @@ final class GamePanel extends JPanel implements KeyListener{
 	private int current_frame = 0; // The current game frame. Increments by 1 everytime the game is updated.
 	private int global_alien_speed = 10; // The global alien speed. Decreases as aliens die.
 	private int global_total_aliens = 55; // Total number of aliens in the game.
-	private int player_lives = 2; // Total number of player lives.
-	private int current_wave = 1; // The current wave of enemies.
+	private int player_lives = 1; // Total number of player lives.
+	private int current_wave = 0; // The current wave of enemies.
 	private int init_counter = 0; // The counter/timer for the INITIALIZING game state.
 	private int winning_counter = 0; // The counter/timer for the WINNING game state.
 	private int dying_counter = 0; // The counter/timer for the DYING game state.
+	private int game_over_counter = 0; // The counter/timer for the GAMEOVER game state.
 	private int alien1_score = 50; // The score for killing alien1.
 	private int alien2_score = 20; // The score for killing alien2.
 	private int alien3_score = 10; // The score for killing alien3.
@@ -79,8 +80,9 @@ final class GamePanel extends JPanel implements KeyListener{
 	private Shooter shooter;
 	private ArrayList<ArrayList<Alien>> aliens = new ArrayList<ArrayList<Alien>>();
 	private ArrayList<AlienBullet> alien_bullets = new ArrayList<AlienBullet>();
-	
+	private ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 	private ShooterBullet shooter_bullet = null;
+	private SpecialAlien special_alien = null;
 	
 	private Font font = new Font("Courier New", Font.BOLD, 30);
 	
@@ -112,6 +114,10 @@ final class GamePanel extends JPanel implements KeyListener{
 				current_row.add(new Alien(50 + j*64, 50 + i*64, type, this));
 			}
 			aliens.add(current_row);
+		}
+		
+		for (int i = 0; i < 4; i++){
+			barriers.add(new Barrier(110 + 220*i, 550));
 		}
 		
 		// Misc Swing/AWT Related Bull
@@ -161,13 +167,46 @@ final class GamePanel extends JPanel implements KeyListener{
     						   break;
     		case DYING:		   runDying();
     						   break;
+    		case GAMEOVER:	   runGameOver();
+    						   break;
     	}
     	current_frame += 1;
     }
     
     public void runInitialization(){
+    	if (init_counter == 0){
+    		aliens.clear();
+    		
+    		Alien.AlienType type;
+			ArrayList<Alien> current_row;
+			
+			for (int i = 0; i < 5; i++){
+				current_row = new ArrayList<Alien>();
+				if (i == 0)
+					type = Alien.AlienType.TOP;
+				else if (i == 1 || i == 2)
+					type = Alien.AlienType.MIDDLE;
+				else
+					type = Alien.AlienType.BOTTOM;
+				
+				for (int j = 0; j < 11; j++){
+					current_row.add(new Alien(50 + j*64, 50 + i*64, type, this));
+				}
+				aliens.add(current_row);
+			}
+			
+			for (int i = 0; i < 4; i++){
+				barriers.add(new Barrier(110 + 220*i, 550));
+			}
+			
+			alien_bullets.clear();
+			
+			player_lives = Math.min(player_lives + 1, 5);
+			current_wave += 1;
+			difficulty += 1;
+    	}
     	init_counter += 1;
-    	if (init_counter > 700){
+    	if (init_counter > 1000){
     		current_state = GameState.PLAYING;
     		init_counter = 0;
     	}
@@ -187,6 +226,34 @@ final class GamePanel extends JPanel implements KeyListener{
     		shooter_bullet.move();
     		if (shooter_bullet.getY() < -5){
     			shooter_bullet = null;
+    		}
+    	}
+    	
+    	if (special_alien == null){
+    		if (Math.random() < 1.0/2000){
+    			if (Math.random() < 0.5)
+    				special_alien = new SpecialAlien(-100, 50, 1);
+    			else 
+    				special_alien = new SpecialAlien(1060, 50, -1);
+    			
+    		}
+    	}
+    	
+    	if (special_alien != null){
+    		if (!special_alien.isDying()){
+    			special_alien.move();
+    			if (shooter_bullet != null){
+    				if (special_alien.collideWith(shooter_bullet)){
+    					special_alien.setDying();
+    					total_score += special_score;
+    					shooter_bullet = null;
+	    			}
+    			}
+    		}
+    		
+    		// Check if it's dead or way off screen.
+    		if (special_alien.isDead() || special_alien.getX() > 1800|| special_alien.getX() < -600){
+    			special_alien = null;
     		}
     	}
     	
@@ -264,11 +331,20 @@ final class GamePanel extends JPanel implements KeyListener{
     	for (AlienBullet bullet : alien_bullets){
     		bullet.move();
     		if (bullet.collideWith(shooter)){
-    			shooter.setDying();
+    			shooter.setDead();
     			current_state = GameState.DYING;
     		}
     		if (bullet.getY() > 800)
     			dead_bullets.add(bullet);
+    	}
+    	
+    	for (Barrier barrier : barriers){
+    		for (AlienBullet bullet : alien_bullets){
+    			if (barrier.collideWith(bullet))
+    				dead_bullets.add(bullet);
+    		}
+    		if (shooter_bullet != null && barrier.collideWith(shooter_bullet))
+    			shooter_bullet = null;
     	}
     	
     	for (AlienBullet bullet : dead_bullets){
@@ -282,33 +358,12 @@ final class GamePanel extends JPanel implements KeyListener{
     	if (winning_counter > 700){
     		current_state = GameState.INITIALIZING;
     		
-    		Alien.AlienType type;
-			ArrayList<Alien> current_row;
-			
-			for (int i = 0; i < 5; i++){
-				current_row = new ArrayList<Alien>();
-				if (i == 0)
-					type = Alien.AlienType.TOP;
-				else if (i == 1 || i == 2)
-					type = Alien.AlienType.MIDDLE;
-				else
-					type = Alien.AlienType.BOTTOM;
-				
-				for (int j = 0; j < 11; j++){
-					current_row.add(new Alien(50 + j*64, 50 + i*64, type, this));
-				}
-				aliens.add(current_row);
-			}
-			
-			alien_bullets.clear();
-			
-			player_lives = Math.min(player_lives + 1, 5);
-			current_wave += 1;
-			difficulty += 1;
+    		
 			
 			alien1_score += 5;
 			alien2_score += 2;
 			alien3_score += 1;
+			special_score += 50;
 			
 			winning_counter = 0;
 			
@@ -317,7 +372,44 @@ final class GamePanel extends JPanel implements KeyListener{
     }
     
     public void runDying(){
+    	if (dying_counter == 0){
+    		alien_bullets.clear();
+    		player_lives -= 1;
+    	}
+    	dying_counter += 1;
     	
+    	if (dying_counter > 300){
+    		dying_counter = 0;
+    		if (player_lives >= 0){
+    			current_state = GameState.PLAYING;
+    			shooter.revive();	
+    		} else 
+    			current_state = GameState.GAMEOVER;
+    	}
+    }
+    
+    public void runGameOver(){
+    	game_over_counter += 1;
+    	if (total_score > high_score){
+    		high_score = total_score;
+    	}
+    	
+    	if (game_over_counter > 300 && key_states[KeyEvent.VK_ENTER]){
+    		game_over_counter = 0;
+    		current_state = GameState.INITIALIZING;
+    		current_wave = 0;
+    		difficulty = 0;
+    		alien1_score = 50;
+    		alien2_score = 20;
+    		alien3_score = 10;
+    		special_score = 150;
+    		player_lives = 1;
+    	}
+    	
+    	if (game_over_counter > 300 && key_states[KeyEvent.VK_ESCAPE]){
+    		game_over_counter = 0;
+    		// Do something idk
+    	}
     }
 	
 	public void keyPressed(KeyEvent evt) {
@@ -354,6 +446,8 @@ final class GamePanel extends JPanel implements KeyListener{
 							   break;
 			case DYING:		   paintDying(g);
 							   break;
+			case GAMEOVER:	   paintGameOver(g);
+							   break;
 		}
 	}
 	
@@ -375,6 +469,18 @@ final class GamePanel extends JPanel implements KeyListener{
 			g.drawImage(Alien.ALIEN1_A, 340, 440, null);
 		if (init_counter > 350)
 			g.drawString(" - " + alien1_score + " Points", 436, 465);
+		if (init_counter > 400)
+			g.drawImage(SpecialAlien.ALIEN, 320, 490, null);
+		if (init_counter > 450){
+			g.setColor(Color.red);
+			g.drawString(" - " + special_score + " Points", 436, 515);
+		}
+		if (init_counter > 700){
+			g.setColor(Color.white);
+			g.drawString("Controls", 390, 580);
+			g.drawString("--------", 390, 600);
+			g.drawString("A - Left, D - Right, SPACE - Shoot", 160, 620);
+		}
 	}
 	
 	public void paintPlaying(Graphics g){
@@ -388,6 +494,9 @@ final class GamePanel extends JPanel implements KeyListener{
 		
 		if (shooter_bullet != null)
 			shooter_bullet.draw(g);
+			
+		if (special_alien != null)
+			special_alien.draw(g);
 		
 		for (AlienBullet bullet : alien_bullets){
 			bullet.draw(g);
@@ -396,6 +505,10 @@ final class GamePanel extends JPanel implements KeyListener{
 		g.setFont(font);
 		g.setColor(Color.white);
 		g.drawString("Wave " + current_wave, 20, 760);
+		
+		for (Barrier b : barriers){
+			b.draw(g);
+		}
 	}
 	
 	public void paintWinning(Graphics g){
@@ -405,10 +518,50 @@ final class GamePanel extends JPanel implements KeyListener{
 		if (winning_counter > 500 && (winning_counter/50 % 2 == 0))
 			g.drawString("Wave " + (current_wave + 1), 400, 200);
 		shooter.draw(g);
+		for (Barrier b : barriers){
+			b.draw(g);
+		}
 	}
 	
 	public void paintDying(Graphics g){
+		for (ArrayList<Alien> row : aliens){
+			for (Alien alien : row){
+				alien.draw(g);
+			}			
+		}
 		
+		if (shooter_bullet != null)
+			shooter_bullet.draw(g);
+			
+		if (special_alien != null)
+			special_alien.draw(g);
+		
+		for (AlienBullet bullet : alien_bullets){
+			bullet.draw(g);
+		}
+		
+		g.setFont(font);
+		g.setColor(Color.white);
+		g.drawString("Wave " + current_wave, 20, 760);
+		
+		for (Barrier b : barriers){
+			b.draw(g);
+		}
+		if (dying_counter/10 % 2 == 0){
+			shooter.draw(g);
+		}
+	}
+	
+	public void paintGameOver(Graphics g){
+		g.setFont(font);
+		g.setColor(Color.white);
+		g.drawString("Game Over", 390, 300);
+		if (game_over_counter > 50 && total_score >= high_score)
+			g.drawString("New High Score!", 340, 330);
+		if (game_over_counter > 200){
+			g.drawString("Continue?", 390, 400);
+			g.drawString("(ENTER - Yes, ESC - No)", 270, 430);
+		}
 	}
 }
 

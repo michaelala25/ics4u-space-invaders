@@ -39,16 +39,12 @@ public class Shooter{
 		return y;
 	}
 	
-	public void setDying(){
+	public void setDead(){
 		dying_frame = 1;
 	}
 	
-	public boolean isDying(){
-		return dying_frame > 0;
-	}
-	
-	public boolean isDead(){
-		return dying_frame > MAX_DEATH_FRAME;
+	public void revive(){
+		dying_frame = 0;
 	}
 	
 	public void move(Direction direction){
@@ -58,7 +54,7 @@ public class Shooter{
 	}
 	
 	public void draw(Graphics g){
-		if (dying_frame > 1){
+		if (dying_frame > 0){
 			g.drawImage(DEAD, x, y, null);
 			dying_frame += 1;
 		}
