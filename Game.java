@@ -73,7 +73,7 @@ final class GamePanel extends JPanel implements KeyListener{
 	
 	// Game Related Fields //
 	
-	private static final String HIGH_SCORE_FILENAME = "highscore.txt"
+	private static final String HIGH_SCORE_FILENAME = "highscore.txt";
 		
 	private static final double SPECIAL_ALIEN_SPAWN_CHANCE = 1.0/2000;
 	
@@ -145,9 +145,13 @@ final class GamePanel extends JPanel implements KeyListener{
 	// Input Related Fields
 	public boolean[] key_states = new boolean[KeyEvent.KEY_LAST + 1];
 	
-	// Initialize high score from file
-	static{
-		int previous_high_score;
+	public GamePanel(Game game){
+		this.game = game;
+		
+		shooter = new Shooter(50, 680, this);
+		
+		// Initialize high score from file
+		int previous_high_score = 0;
 		
 		try{
 			FileReader file_reader = new FileReader(HIGH_SCORE_FILENAME);
@@ -157,19 +161,10 @@ final class GamePanel extends JPanel implements KeyListener{
 			previous_high_score = Integer.parseInt(buffered_reader.readLine());
 			
 			buffered_reader.close();
-		} catch (FileNotFoundException exc){
-			previous_high_score = 0;
-		} catch (IOException | NumberFormatException exc){
-			
+		} catch (IOException | NumberFormatException exc){	
 		}
 		
 		high_score = previous_high_score;
-	}
-	
-	public GamePanel(Game game){
-		this.game = game;
-		
-		shooter = new Shooter(50, 680, this);
 
 		addKeyListener(this);
 		setSize(960, 800);
@@ -523,7 +518,7 @@ final class GamePanel extends JPanel implements KeyListener{
     			buffered_writer.write(Integer.toString(high_score));
     			
     			buffered_writer.close();
-    		} catch (FileNotFoundException | IOException){
+    		} catch (IOException exc){
     		}
     		System.exit(0);
     	}
