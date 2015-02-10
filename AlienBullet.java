@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 
 public class AlienBullet extends Bullet{
+	// A bullet shot by an Alien.
 	
 	public AlienBullet(final int x, final int y){
 		super(x, y);

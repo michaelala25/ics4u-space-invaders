@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.io.File;
 
 public final class Alien{
+	// The basic alien class.
 	
 	public enum AlienType{
 		BOTTOM, MIDDLE, TOP; // Corresponds to the three different possible types of aliens.
@@ -28,6 +29,7 @@ public final class Alien{
 		}
 	}
 	
+	// The amounts by which the aliens move in the corresponding directions.
 	private static final int X_MOVEMENT = 8;
 	private static final int Y_MOVEMENT = 20;
 	
@@ -85,6 +87,10 @@ public final class Alien{
 	
 	public void move(Direction direction){
 		if (game.getCurrentFrame() % game.getGlobalAlienSpeed() == 0)
+			/* This ugly formula just increases the amount by which we move the alien
+			 * depending on the overall difficulty of the game (which is inversely
+			 * proportional to the number of aliens remaining).
+			 */
 			x += (int)(direction == Direction.LEFT ? -X_MOVEMENT : X_MOVEMENT) * Math.min(
 				Math.max((2 + game.getDifficulty())/game.getGlobalAlienSpeed(), 1), 1.2 + 0.1*game.getDifficulty());
 	}

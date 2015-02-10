@@ -1,6 +1,7 @@
 import java.awt.Graphics;
 
 public abstract class Bullet{
+	// An abstract base class for AlienBullet and ShooterBullet
 
 	private int x, y;
 	

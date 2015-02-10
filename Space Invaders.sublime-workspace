@@ -300,28 +300,51 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/USER/Dropbox/Grade 11/Period 7 - Comp Sci/Notes/Swing/Game1.java",
+			"file": "/C/Users/USER/Dropbox/Computer Science/Java/Game/Engines/Vulcan/src/vulcan.py",
 			"settings":
 			{
-				"buffer_size": 2097,
+				"buffer_size": 11796,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Game.java",
+			"file": "/C/Users/USER/Dropbox/Computer Science/Java/Game/Engines/Vulcan/src/rtree.py",
 			"settings":
 			{
-				"buffer_size": 444,
+				"buffer_size": 3560,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "[RTreeNode(1, 1, 2, 2)]\n\n[RTreeNode(1, 1, 2, 2), RTreeNode(4, 4, 1, 1)]\n\n[RTreeNode(1, 1, 2, 2), RTreeNode(4, 4, 1, 1), RTreeNode(4, 1, 1, 2)]\n\nOH BOY DOIN THE SPLIT\nSEEDS:  (RTreeNode(1, 1, 2, 2), RTreeNode(4, 4, 1, 1))\n[RTreeNode(1, 1, 2, 2), RTreeNode(4, 1, 4, 4)]\n[RTreeNode(1, 1, 2, 2)]\n[RTreeNode(4, 4, 1, 1), RTreeNode(4, 1, 1, 2), RTreeNode(6, 1, 2, 3)]\n\n[RTreeNode(1, 1, 2, 2), RTreeNode(4, 1, 4, 4), RTreeNode(10, 3, 1, 4)]\n\nOH BOY DOIN THE SPLIT\nSEEDS:  (RTreeNode(1, 1, 2, 2), RTreeNode(10, 3, 1, 4))\n[RTreeNode(1, 1, 8, 4), RTreeNode(10, 3, 1, 4)]\n[RTreeNode(1, 1, 2, 2), RTreeNode(4, 1, 4, 4), RTreeNode(7, 2, 2, 1)]\n[RTreeNode(1, 1, 2, 2)]\n\n[RTreeNode(1, 1, 8, 4), RTreeNode(10, 3, 1, 4), RTreeNode(3, 3, 3, 4)]\n\n\n***Repl Closed***\n",
+			"settings":
+			{
+				"buffer_size": 747,
+				"line_ending": "Windows",
+				"name": "*REPL* [python]",
+				"read_only": true,
+				"scratch": true
 			}
 		}
 	],
-	"build_system": "Packages/Java/JavaC.sublime-build",
+	"build_system": "Packages/User/python3.4.sublime-build",
 	"command_palette":
 	{
-		"height": 400.0,
+		"height": 194.0,
 		"selected_items":
 		[
+			[
+				"indentation",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"space",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"pep8",
+				"User: Python PEP8 Autoformat"
+			],
 			[
 				"javatar",
 				"Javatar: Builds..."
@@ -563,10 +586,6 @@
 				"Indentation: Reindent Lines"
 			],
 			[
-				"space",
-				"Indentation: Convert to Spaces"
-			],
-			[
 				"",
 				"Snippet: New Class"
 			]
@@ -599,10 +618,15 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/USER/Dropbox/Grade 11/Period 7 - Comp Sci/Assignments/Simple Game (Space Invaders)"
+		"/C/Users/USER/Dropbox/Computer Science/Java/Game/Engines/Vulcan/src"
 	],
 	"file_history":
 	[
+		"/C/Users/USER/Dropbox/Grade 11/Period 7 - Comp Sci/Assignments/Simple Game (Space Invaders)/.gitignore",
+		"/C/Users/USER/Dropbox/Computer Science/Java/Game/Engines/Vulcan/src/rtree.py",
+		"/C/Users/USER/Dropbox/Computer Science/Python/Old Files/Game Prototypes/alpha/StarGaze Engine 0.7/stargaze/assets/geometry/rect.py",
+		"/C/Users/USER/Dropbox/Grade 11/Period 7 - Comp Sci/Notes/Swing/Game1.java",
+		"/C/Users/USER/Dropbox/Grade 11/Period 7 - Comp Sci/Assignments/Simple Game (Space Invaders)/Game.java",
 		"/C/Users/USER/Documents/Computer Science/Java/Game/Engines/Vulcan/Notes on Prototype-3",
 		"/C/Users/USER/Documents/Computer Science/Java/Game/Engines/Vulcan/src/vulcan.py",
 		"/C/Users/USER/Documents/Computer Science/Java/Game/Engines/Vulcan/src/tests.py",
@@ -725,12 +749,7 @@
 		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/template functions 002.py",
 		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/LICENSE",
 		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/README.md",
-		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/.gitignore",
-		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/.gitattributes",
-		"/C/Users/USER/Dropbox/Grade 11/Period 7 - Comp Sci/Assignments/Space Invaders (Unfinished)/LICENSE",
-		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/__init__.py",
-		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/constants.py",
-		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/meta.py"
+		"/C/Users/USER/Vulcan Engine/Misc Projects/template functions/py-template-function/.gitignore"
 	],
 	"find":
 	{
@@ -840,24 +859,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/USER/Dropbox/Grade 11/Period 7 - Comp Sci/Notes/Swing/Game1.java",
+					"file": "/C/Users/USER/Dropbox/Computer Science/Java/Game/Engines/Vulcan/src/vulcan.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2097,
+						"buffer_size": 11796,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								406,
-								406
+								2337,
+								2337
 							]
 						],
 						"settings":
@@ -865,155 +884,275 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 936.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/USER/Dropbox/Computer Science/Java/Game/Engines/Vulcan/src/rtree.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								169,
+								169
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Java/Java.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 22.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Game.java",
+					"buffer": 2,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 444,
+						"buffer_size": 747,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								440,
-								440
+								747,
+								747
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"auto_complete": true,
+							"auto_indent": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Java/Java.tmLanguage"
+							"detect_indentation": false,
+							"gutter": false,
+							"history_arrows": true,
+							"indent_subsequent_lines": false,
+							"line_numbers": false,
+							"repl": true,
+							"repl_external_id": "python",
+							"repl_id": "981ce16ddedb49e8a8c9d1a1a6226174",
+							"repl_restart_args":
+							{
+								"cmd":
+								[
+									"python",
+									"-u",
+									"$file_basename"
+								],
+								"cwd": "$file_path",
+								"encoding": "utf8",
+								"extend_env":
+								{
+									"PYTHONIOENCODING": "utf-8"
+								},
+								"external_id": "python",
+								"syntax": "Packages/Python/Python.tmLanguage",
+								"type": "subprocess"
+							},
+							"repl_sublime2": false,
+							"smart_indent": false,
+							"spell_check": false,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
+						"translation.x": -0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -1112,7 +1251,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 260.0,
+	"side_bar_width": 104.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

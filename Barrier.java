@@ -5,10 +5,16 @@ import java.awt.Graphics;
 import java.io.File;
 
 public class Barrier{
+	// A destructible barrier.
 	
 	private final BarrierPiece[][] pieces;
 	
 	public Barrier(final int x, final int y){
+		/* Initialize the pieces of the barrier. Each is a 16 x 16 sprite
+		 * represented by a BarrierPiece object. The Barrier is broken up
+		 * into BarrierPieces so as to make destruction more manageable;
+		 * only individual pieces can be damaged.
+		 */
 		final BarrierPiece[][] pieces = {
 			{new BarrierPiece(x, y, 2),      new BarrierPiece(x + 16, y, 1),      new BarrierPiece(x + 32, y, 1),      new BarrierPiece(x + 48, y, 1),      new BarrierPiece(x + 64, y, 3)},
 			{new BarrierPiece(x, y + 16, 1), new BarrierPiece(x + 16, y + 16, 1), new BarrierPiece(x + 32, y + 16, 1), new BarrierPiece(x + 48, y + 16, 1), new BarrierPiece(x + 64, y + 16, 1)},
@@ -18,6 +24,7 @@ public class Barrier{
 		this.pieces = pieces;
 	}
 	
+	// Check if the barrier collides with a bullet and return whether or not an intersection occurred.
 	public boolean collideWith(Bullet b){
 		for (BarrierPiece[] row : pieces){
 			for (BarrierPiece piece : row){

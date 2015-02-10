@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.io.File;
 
 public class SpecialAlien{
+	// The special red alien that periodically flies overhead.
 	
 	public static BufferedImage ALIEN, DEAD;
 	private static final int MAX_DEATH_FRAME = 100;

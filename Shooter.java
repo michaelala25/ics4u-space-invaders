@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.io.File;
 
 public class Shooter{
+	// The player object.
 	
 	private static final int SPEED = 3;
 	

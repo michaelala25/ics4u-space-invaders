@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 
 public class ShooterBullet extends Bullet{
+	// A bullet shot by the player.
 	
 	public ShooterBullet(final int x, final int y){
 		super(x, y);
