@@ -1,7 +1,7 @@
 /*
  * SPACE INVADERS
  * Michael Ala, 2/10/2015
- *
+ *I want a free shirt for hacktoberfest. Disregard
  * This is a clone of the 1978 smash hit Space Invaders. It attempts
  * to accurately emulate the original game (although slightly more
  * danmaku).
